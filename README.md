@@ -69,3 +69,4 @@ This project automates **one end-to-end test case** for **Unit Kerja** on `demo.
 3. Wait until rows refresh.  
 4. Verify that a row containing **Finance35** appears in the list.  
 
+and more...
