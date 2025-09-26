@@ -1,0 +1,33 @@
+name: Java Playwright BDD CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 20
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '20'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Run Tests
+        run: ./gradlew test
+
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: junit-test-report
+          path: build/test-results/test/
